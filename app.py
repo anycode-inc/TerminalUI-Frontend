@@ -3,6 +3,8 @@ import requests as req
 
 app = Flask("terminal_ui")
 
+server_ip = "13.235.69.120"
+
 @app.route("/")
 def index():
     return render_template("index.html")
@@ -17,7 +19,7 @@ def task():
     choice = request.args.get("choice")
     template = "menu.html"
     if choice == "1":
-        url = "http://13.235.69.120/cgi-bin/TerminalUI-CGI/docker.py?x=python"
+        url = f"http://{server_ip}/cgi-bin/TerminalUI-CGI/docker.py?x=python"
         res = req.get(url)
         contents = res.text
         template = "docker.html"
