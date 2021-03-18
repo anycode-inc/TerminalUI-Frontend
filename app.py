@@ -4,6 +4,7 @@ import requests as req
 from docker.python_on_docker import python_on_docker
 from docker.httpd_on_docker import httpd_on_docker
 from hadoop.hadoop_cluster import create_hadoop_cluster
+from kubernetes.kubernetes_cluster import configure_kube_master, configure_kube_slave
 
 app = Flask("terminal_ui")
 
@@ -29,6 +30,8 @@ def task():
         template = "docker/httpd_docker.html"
     elif choice == "3":
         template = "hadoop/hadoop_cluster.html"
+    elif choice == "4":
+        template = "kubernetes/kubernetes_cluster.html"
     else:
         template = "menu.html"
     return render_template(template)
@@ -48,5 +51,21 @@ def hadoop_cluster():
     datanode_ip = request.args.get("datanode-ip")
     datanode_directory = request.args.get("datanode-directory")
     contents = create_hadoop_cluster(server_ip, namenode_ip, namenode_port, namenode_directory, datanode_ip, datanode_directory)
+    template = "response.html"
+    return render_template(template, response=contents)
+
+@app.route("/configure-kubernetes-master")
+def config_kube_master():
+    pod_network_cidr = request.args.get("pod-network-cidr")
+    owner = request.args.get("owner")
+    group = request.args.get("group")
+    contents = configure_kube_master(server_ip, pod_network_cidr, owner, group)
+    template = "response.html"
+    return render_template(template, response=contents)
+
+@app.route("/configure-kubernetes-slave")
+def config_kube_slave():
+    kube_join_command = request.args.get("kube-join-command")
+    contents = configure_kube_slave(server_ip, kube_join_command)
     template = "response.html"
     return render_template(template, response=contents)

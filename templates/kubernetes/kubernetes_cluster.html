@@ -1,0 +1,13 @@
+<h1>Kube Master Node</h1>
+<form action="/configure-kubernetes-master">
+    Pod Network CIDR: <input name="pod-network-cidr" type="text" /> <br>
+    Owner: <input name="owner" type="text" /> <br>
+    Group: <input name="group" type="text" /> <br>
+    <input type="submit" />
+</form>
+
+<h1>Kube Slave Node</h1>
+<form action="/configure-kubernetes-slave">
+    Kube Join Command: <input name="kube-join-command" type="text" /> <br>
+    <input type="submit" />
+</form>
