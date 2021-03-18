@@ -22,7 +22,7 @@ def task():
     template = "menu.html"
     if choice == "1":
         contents = python_on_docker(server_ip)
-        template = "docker.html"
+        template = "response.html"
     else:
         template = "menu.html"
     return render_template(template, response=contents)
