@@ -45,7 +45,7 @@ def task():
 @app.route("/run-commands")
 def run_commands():
     command = request.args.get("command")
-    contents = run_command(command)
+    contents = run_command(server_ip, command)
     template = "response.html"
     return render_template(template, response=contents)
 
