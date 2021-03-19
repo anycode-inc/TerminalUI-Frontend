@@ -32,6 +32,8 @@ def task():
         template = "hadoop/hadoop_cluster.html"
     elif choice == "4":
         template = "kubernetes/kubernetes_cluster.html"
+    elif choice == "5":
+        template = "aws/ha_arch_on_aws.html"
     else:
         template = "menu.html"
     return render_template(template)

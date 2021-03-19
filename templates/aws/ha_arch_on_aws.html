@@ -1,0 +1,87 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            .split {
+                height: 100%;
+                width: 50%;
+                position: fixed;
+                z-index: 1;
+                top: 0;
+                overflow-x: hidden;
+                padding-top: 20px;
+            }
+                
+            .left {
+                left: 0;
+            }
+                
+            .right {
+                right: 0;
+            }
+        </style>
+          
+    </head>
+    <body>
+        <h1>HA Architecture on AWS</h1> <br>
+        <div>
+            <div class="split left">
+                <ol>
+                    <li>Docker</li>
+                </ol>
+            </div>
+
+            <div class="split right">
+                <div>
+                    <h1>Launch EC2 Instance</h1>
+                    <form action="/launch-ec2-instance">
+                        <input name="image-id" type="text" /> <br>
+                        <input name="instance-type" type="text" /> <br>
+                        <input name="count" type="text" /> <br>
+                        <input name="subnet-id" type="text" /> <br>
+                        <input name="security-group-id" type="text" /> <br>
+                        <input name="key-name" type="text" /> <br>
+                        <input type="submit" />
+                    </form>
+                </div>
+                <div>
+                    <h1>Create EBS Volume</h1>
+                    <form action="/create-ebs-volume">
+                        <input name="availability-zone" type="text" /> <br>
+                        <input name="volume-type" type="text" /> <br>
+                        <input name="size" type="text" /> <br>
+                        <input name="key" type="text" /> <br>
+                        <input name="value" type="text" /> <br>
+                        <input type="submit" />
+                    </form>
+                </div>
+                <div>
+                    <h1>Attach EBS Volume</h1>
+                    <form action="/attach-ebs-volume">
+                        <input name="volume-id" type="text" /> <br>
+                        <input name="instance-id" type="text" /> <br>
+                        <input name="device-name" type="text" /> <br>
+                        <input type="submit" />
+                    </form>
+                </div>
+                <div>
+                    <h1>Upload File to S3 Bucket</h1>
+                    <form action="/upload-to-s3-bucket">
+                        <input name="local-file-location" type="text" /> <br>
+                        <input name="s3-bucket-location" type="text" /> <br>
+                        <input name="acl" type="text" /> <br>
+                        <input type="submit" />
+                    </form>
+                </div>
+                <div>
+                    <h1>Create Cloudfront Distribution</h1>
+                    <form action="/create-cloudfront-distribution">
+                        <input name="bucket-name" type="text" /> <br>
+                        <input name="default-root-object" type="text" /> <br>
+                        <input type="submit" />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
