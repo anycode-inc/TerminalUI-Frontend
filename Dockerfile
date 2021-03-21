@@ -6,12 +6,12 @@ RUN pip3 install --upgrade pip
 
 RUN pip3 install flask
 
-EXPOSE 80
+EXPOSE 8080
 
 RUN git clone https://github.com/anycode-inc/TerminalUI-Frontend.git
 
 RUN cd TerminalUI-Frontend
 
-RUN python3 app.py
+ENTRYPOINT [ "python3" ]
 
-CMD /bin/sh
+CMD [ "app.py" ]
