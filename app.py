@@ -131,3 +131,5 @@ def create_distribution():
     contents = create_cloudfront_distribution(server_ip, bucket_name, default_root_object)
     template = "response.html"
     return render_template(template, response=contents)
+
+app.run(port=80)
