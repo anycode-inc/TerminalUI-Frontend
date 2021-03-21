@@ -12,6 +12,4 @@ RUN git clone https://github.com/anycode-inc/TerminalUI-Frontend.git
 
 RUN cd TerminalUI-Frontend
 
-ENTRYPOINT ["python3"]
-
-CMD ["app.py"]
+CMD python3 app.py
