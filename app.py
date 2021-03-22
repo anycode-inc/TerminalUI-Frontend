@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 import requests as req
+import speech_recognition as sr
 
 from commands.command import run_command
 from docker.python_on_docker import python_on_docker
@@ -131,5 +132,22 @@ def create_distribution():
     contents = create_cloudfront_distribution(server_ip, bucket_name, default_root_object)
     template = "response.html"
     return render_template(template, response=contents)
+
+# Voice recognition
+@app.route("/get-voice")
+def get_voice():
+    template = "menu.html"
+    recognizer = sr.Recognizer()
+    with sr.Microphone() as source:
+        audio = recognizer.listen(source)
+    userRequest = recognizer.recognize_google(audio)
+
+    if ((("run" in userRequest) or ("execute" in userRequest)) and (("commands" in userRequest) or ("command" in userRequest))):
+        template = "command/command.html"
+    elif ():
+        launchFileExplorer()
+    else:
+        print("Unable to perform!")
+    return render_template(template)
 
 app.run(host="0.0.0.0", port=8080)
