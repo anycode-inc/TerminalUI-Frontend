@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 import requests as req
+import speech_recognition as sr
 
 from commands.command import run_command
 from docker.python_on_docker import python_on_docker
@@ -131,5 +132,32 @@ def create_distribution():
     contents = create_cloudfront_distribution(server_ip, bucket_name, default_root_object)
     template = "response.html"
     return render_template(template, response=contents)
+
+# Voice recognition
+@app.route("/get-voice")
+def get_voice():
+    template = "menu.html"
+    recognizer = sr.Recognizer()
+    with sr.Microphone() as source:
+        audio = recognizer.listen(source)
+    userRequest = recognizer.recognize_google(audio)
+
+    if ((("run" in userRequest) or ("execute" in userRequest)) and (("commands" in userRequest) or ("command" in userRequest))):
+        template = "command/command.html"
+    elif ((("create" in userRequest) or ("provision" in userRequest) or ("configure" in userRequest) or ("launch" in userRequest)) and ((("python" in userRequest) or ("Python" in userRequest)) and ("docker" in userRequest))):
+        contents = python_on_docker(server_ip)
+        template = "response.html"
+    elif ((("create" in userRequest) or ("provision" in userRequest) or ("configure" in userRequest) or ("launch" in userRequest)) and ((("httpd" in userRequest) or ("apache" in userRequest) or ("Apache" in userRequest)) and ("docker" in userRequest))):
+        template = "docker/httpd_docker.html"
+    elif ((("create" in userRequest) or ("provision" in userRequest) or ("configure" in userRequest) or ("launch" in userRequest)) and ((("hadoop" in userRequest) or ("hdfs" in userRequest) or (("Hadoop" in userRequest))) and ("cluster" in userRequest))):
+        template = "hadoop/hadoop_cluster.html"
+    elif ((("create" in userRequest) or ("provision" in userRequest) or ("configure" in userRequest) or ("launch" in userRequest)) and ((("kubernetes" in userRequest) or ("k8s" in userRequest)) and ("cluster" in userRequest))):
+        template = "kubernetes/kubernetes_cluster.html"
+    elif ((("create" in userRequest) or ("provision" in userRequest) or ("configure" in userRequest) or ("launch" in userRequest)) and (("HA" in userRequest) or (("High" in userRequest) and ("availability" in userRequest)) or ("infrastructure" in userRequest)) and (("aws" in userRequest) or (("Amazon" in userRequest) and ("cloud" in userRequest)))):
+        template = "aws/ha_arch_on_aws.html"
+    else:
+        print("Unable to perform!")
+        template = "menu.html"
+    return render_template(template, response=userRequest)
 
 app.run(host="0.0.0.0", port=8080)
