@@ -1,63 +1,70 @@
-<html>
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <style>
-            .split {
-                height: 100%;
-                width: 50%;
-                position: fixed;
-                z-index: 1;
-                top: 0;
-                overflow-x: hidden;
-                padding-top: 20px;
-            }
-                
-            .left {
-                left: 0;
-            }
-                
-            .right {
-                right: 0;
-            }
+<!DOCTYPE html>
+<html lang="en">
+<head>
 
-            .bottom {
-                bottom: 0;
-                position: fixed;
-                padding-bottom: 50px;
-                padding-left: 200px;
-            }
+     <title>Menu</title>
+<!--
 
-            .button {
-                border-style: none;
-                background-color: transparent;
-                outline-style: none;
-            }
+DIGITAL TREND
 
-            .menus {
-                padding-top: 5%;
-            }
+https://templatemo.com/tm-538-digital-trend
 
-            .task {
-                padding-top: 45%;
-                padding-left: 20%;
-            }
-        </style>
-          
-    </head>
-    <body>
-        <h1>Menu</h1> <br>
-        <div">
-            <div class="split left">
-                <div class="menus">
-                    <ol>
-                        <li>Run Commands</li>
-                        <li>Python on Docker</li>
-                        <li>Httpd on Docker</li>
-                        <li>Create Hadoop Cluster</li>
-                        <li>Create Kubernetes Cluster</li>
-                        <li>HA Architecture on AWS</li>
-                    </ol>
-                    <div class="bottom">
+-->
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+     <meta name="description" content="">
+     <meta name="keywords" content="">
+     <meta name="author" content="">
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+     <link rel="stylesheet" href="css/bootstrap.min.css">
+     <link rel="stylesheet" href="css/font-awesome.min.css">
+     <link rel="stylesheet" href="css/aos.css">
+     <link rel="stylesheet" href="css/owl.carousel.min.css">
+     <link rel="stylesheet" href="css/owl.theme.default.min.css">
+
+     <!-- MAIN CSS -->
+     <link rel="stylesheet" href="css/templatemo-digital-trend.css">
+
+</head>
+<body>
+
+     <!-- MENU BAR -->
+    <nav class="navbar navbar-expand-lg position-absolute">
+        <div class="container">
+          <a class="navbar-brand" href="index.html">
+              <i class="fa fa-WebApp"></i>
+              Terminal UI
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
+
+
+     <!-- CONTACT -->
+     <section class="contact section-padding">
+          <div class="container">
+               <div class="column">
+
+                    <div class="col-lg-6 mx-auto col-md-7 col-12 py-5 mt-5 text-center" data-aos="fade-up">
+                      
+
+                      <h1 class="mb-4"><strong>Options:</strong></h1>
+                      <p>_______________________________________________</p>
+                      <p>1. Run Commands</p>
+                      <p>2. Docker</p>
+                      <p>3. Httpd on Docker</p>
+                      <p>4. Create Hadoop Cluster</p>
+                      <p>5. Create Kubernetes Cluster</p>
+                      <p>6. High Availability Architecture on AWS Cloud</p>
+                      <p>_______________________________________________</p>
+
+                    </div>
+
                         <form action="/get-voice">
                             <button class="button" type="submit">
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="50" height="50" viewBox="0 0 350 350" xml:space="preserve">
@@ -73,18 +80,27 @@
                                 </svg>
                             </button>
                         </form>
-                    </div>
-                </div>
-            </div>
 
-            <div class="split right">
+                <div class="col-lg-8 mx-auto col-md-10 col-12">
                 <div class="task">
-                    <form action="/task">
-                        <input name="choice" type="number" /> <br>
-                        <input type="submit" />
+                    <form action="/task" method="post" class="contact-form" data-aos="fade-up" data-aos-delay="300" role="form">
+                        <div class="col-lg-6 col-12">
+                        <input name="choice" type="number" class="form-control" placeholder="Enter your choice"/> <br>
+                        <input type="submit" class="form-control" id="submit-button" name="submit"/>
+                        </div>
                     </form>
                 </div>
             </div>
-        </div>
-    </body>
+               </div>
+          </div>
+     </section>
+
+     <!-- SCRIPTS -->
+     <script src="js/jquery.min.js"></script>
+     <script src="js/bootstrap.min.js"></script>
+     <script src="js/aos.js"></script>
+     <script src="js/owl.carousel.min.js"></script>
+     <script src="js/custom.js"></script>
+
+</body>
 </html>
